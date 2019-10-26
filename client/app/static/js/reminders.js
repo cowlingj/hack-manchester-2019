@@ -23,10 +23,10 @@ request.onreadystatechange = function () {
             reminderElement.classList.add('row', 'reminder');
 
             var reminderTextElement = document.createElement("p");
-            reminderTextElement.classList.add('col-8', 'reminderText');
+            reminderTextElement.classList.add('col-8', 'reminderText', 'w3-animate-left');
 
             var reminderButtonElement = document.createElement('button');
-            reminderButtonElement.classList.add('col-4');
+            reminderButtonElement.classList.add('col-4', 'w3-animate-right');
             reminderButtonElement.innerHTML = 'done';
 
             if (typeof response.reminders[i] === 'string') {

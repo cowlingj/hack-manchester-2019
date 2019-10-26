@@ -1,3 +1,7 @@
+body {
+  background-color: #f1f1f2;
+}
+
 .center {
   margin: auto;
 width: 50%;
@@ -8,7 +12,7 @@ margin-top: 7%;
 }
 
 .button {
-background-color: red; /* Green */
+background-color: #FA6751; /* Green */
 border: none;
 color: white;
 padding: 15px 32px;
@@ -22,8 +26,8 @@ height: 100%;
 margin-top: 10%;
 border-radius: 8px;
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-margin-bottom: 2%;
-transition-duration: 0.4s;
+margin-bottom: 3%;
+transition-duration: 0.5s;
 }
 
 .button:hover {
@@ -32,18 +36,31 @@ transition-duration: 0.4s;
 
 .reminder {
   padding: 1%;
+  border-bottom-color: #a1d6e2 !important;
+  border-bottom: solid;
+  margin-bottom: 1%;
+  border-bottom-width: 1px;
 }
 
 button {
   border-radius: 55px;
   height: 5vw;
-  font-size: 3vw;
-  background-color: green;
+  background-color: #1995ad;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   border: none;
   color: white;
+  transition-duration: 0.5s;
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+.col-4 {
+  font-size: 3vw;
 }
 
 .reminderText {
   font-size: 3vw;
+  color: #1995ad;
 }
