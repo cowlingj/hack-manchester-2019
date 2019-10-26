@@ -23,7 +23,7 @@ request.onreadystatechange = function () {
             reminderElement.classList.add('row', 'reminder');
 
             var reminderTextElement = document.createElement("p");
-            reminderTextElement.classList.add('col-8');
+            reminderTextElement.classList.add('col-8', 'reminderText');
 
             var reminderButtonElement = document.createElement('button');
             reminderButtonElement.classList.add('col-4');
