@@ -24,7 +24,7 @@ app.post('/sendmessage', (req, res) => {
         res.sendStatus(200);
 });
 
-app.get('/reminder', (req, res) => {
+app.get('/reminders', (req, res) => {
         res.json({reminders: arrayReminders})
         JSON.parse();
 });
