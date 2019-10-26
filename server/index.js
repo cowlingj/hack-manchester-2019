@@ -12,7 +12,7 @@ app.use(cors({origin: "*"}));
 //app.get('test', (req, res) => { res.json({ key: "It's working"}) });
 
 app.post('/sendmessage', (req, res) => { 
-    clockwork.sendSms({ To:    process.env.NUMBER, Content: 'Hello World'}, 
+    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Hello World'}, 
         function(error, resp) {
             if (error) {
                 console.log('Something went wrong', error);
