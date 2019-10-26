@@ -6,6 +6,7 @@ const port = 3000
 var clockwork = require('clockwork')({key:'84b3b39adaeacdb378a174c2fedb58cc62dcd01e'});
 var arrayReminders = ["Take medication","Go for a walk","Call your family"];
 
+app.use(require('morgan')('tiny'))
 app.use(cors({origin: "*"}));
 
 // use this to test the endpoint runnning 

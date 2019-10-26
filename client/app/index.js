@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const port = 3001
 
+app.use(require('morgan')('tiny'))
 app.get('/', (_req, res) => { res.sendFile(path.join(__dirname, 'static', 'html', 'index.html')) })
 app.get('/*', express.static(path.join(__dirname, 'static', 'html')))
 app.use('/static', express.static(path.join(__dirname, 'static')))
