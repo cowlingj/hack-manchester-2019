@@ -6,7 +6,7 @@ function sendForm() {
   formData.append("message", document.querySelector('form [name="message"]').innerHTML);
 
   var request = new XMLHttpRequest();
-  request.open("POST", "http://localhost:3000");
+  request.open("POST", "http://localhost:3000/sendmessage")
   request.send(formData);
   request.onreadystatechange = function () {
     if(request.readyState === 4) {
@@ -15,7 +15,6 @@ function sendForm() {
       window.location = '/index.html'
     }
   }
-  request.onerror = function (req, err) {
-    console.log(request.responseText)
-  }
+  request.onerror = function (_req, _err) { console.log(request.responseText) }
+  request.send(formData);
 }
