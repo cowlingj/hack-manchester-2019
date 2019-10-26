@@ -12,7 +12,12 @@ request.onreadystatechange = function () {
 
             var reminderTextElement = document.createElement("p");
             reminderTextElement.classList.add('col-8');
-            reminderTextElement.innerHTML = response.reminders[i];
+
+            if (typeof response.reminders[i] === 'string') {
+              reminderTextElement.innerHTML = response.reminders[i];
+            } else {
+              reminderTextElement.innerHTML = response.reminders[i].message;
+            }
 
             var reminderButtonElement = document.createElement('button');
             reminderButtonElement.classList.add('col-4');
