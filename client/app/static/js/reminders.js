@@ -7,20 +7,23 @@ request.onreadystatechange = function () {
     if (request.status === 200){
         const response = JSON.parse(request.responseText)
         for (var i = 0; i < response.reminders.length; i++) {
-            var reminderNode = document.createElement("p");
-            reminderNode.innerHTML = response.reminders[i];
-            var reminderListNode = document.getElementById("reminderList");
-            reminderListNode.appendChild(reminderNode); 
+            var reminderElement = document.createElement("div");
+            var reminderTextElement = document.createElement("p");
+            
+            reminderTextElement.innerHTML = response.reminders[i];
+            var reminderListElement = document.getElementById("reminderList");
+            reminderElement.appendChild(reminderTextElement);
+            reminderListElement.appendChild(reminderElement); 
         }
     }
     console.log(request.status)
     console.log(request.responseText)
     const response = JSON.parse(request.responseText)
     for (var i = 0; i < response.reminders.length; i++) {
-        var reminderNode = document.createElement("p");
-        reminderNode.innerHTML = response.reminders[i];
-        var reminderListNode = document.getElementById("reminderList");
-        reminderListNode.appendChild(reminderNode); 
+        var reminderTextElement = document.createElement("p");
+        reminderTextElement.innerHTML = response.reminders[i];
+        var reminderListElement = document.getElementById("reminderList");
+        reminderListElement.appendChild(reminderTextElement); 
     }
 
   }
