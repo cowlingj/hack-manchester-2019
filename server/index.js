@@ -5,7 +5,7 @@ const cors = require('cors');
 const port = 3000
 var clockwork = require('clockwork')({key:'84b3b39adaeacdb378a174c2fedb58cc62dcd01e'});
 var arrayReminders = [
-    {id:"1", messagge:"Take medication", notify: new Date()},
+    {id:"1", message:"Take medication", notify: new Date()},
     {id:"2", message: "Go for a walk", notify: new Date()},
     {id:"3", message:"Call your family", notify: new Date()}
 ];

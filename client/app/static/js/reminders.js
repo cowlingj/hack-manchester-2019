@@ -7,7 +7,7 @@ function markReminderAsDone(id) {
       toRemove.parentNode.removeChild(toRemove)
     }
   }
-
+  request.send();
 }
 
 var request = new XMLHttpRequest();
@@ -19,6 +19,7 @@ request.onreadystatechange = function () {
     if (request.status === 200){
         const response = JSON.parse(request.responseText)
         for (var i = 0; i < response.reminders.length; i++) {
+            const reminderIndex = i;
             var reminderElement = document.createElement("div");
             reminderElement.classList.add('row', 'reminder');
 
@@ -29,13 +30,14 @@ request.onreadystatechange = function () {
             reminderButtonElement.classList.add('col-4');
             reminderButtonElement.innerHTML = 'done';
 
-            if (typeof response.reminders[i] === 'string') {
+            if (typeof response.reminders[reminderIndex] === 'string') {
               reminderTextElement.innerHTML = response.reminders[i];
             } else {
               reminderElement.classList.add('reminder-' + response.reminders[i].id)
               reminderTextElement.innerHTML = response.reminders[i].message;
-              reminderButtonElement.onclick = function () {
-                markReminderAsDone(response.reminders[i].id)
+              reminderButtonElement.onclick = function() {
+                console.log("clicked: "+reminderIndex);
+                markReminderAsDone(response.reminders[reminderIndex].id); 
               }
             }
 
