@@ -29,4 +29,8 @@ app.get('/reminder', (req, res) => {
         JSON.parse();
 });
 
+app.use("*", (req, res) => {
+    res.sendStatus(400);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
