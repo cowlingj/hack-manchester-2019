@@ -4,7 +4,11 @@ const app = express()
 const cors = require('cors');
 const port = 3000
 var clockwork = require('clockwork')({key:'84b3b39adaeacdb378a174c2fedb58cc62dcd01e'});
-var arrayReminders = ["Take medication","Go for a walk","Call your family"];
+var arrayReminders = [
+    {id:"1", messagge:"Take medication", notify: new Date()},
+    {id:"2", message: "Go for a walk", notify: new Date()},
+    {id:"3", message:"Call your family", notify: new Date()}
+];
 
 app.use(cors({origin: "*"}));
 
@@ -25,8 +29,23 @@ app.post('/sendmessage', (req, res) => {
 });
 
 app.get('/reminders', (req, res) => {
-        res.json({reminders: arrayReminders})
-        JSON.parse();
+    console.log(arrayReminders);
+   var reminders =  arrayReminders.filter(function(reminder){
+        return reminder.notify <= new Date();
+    }).map(function(reminder){
+        const {notify, ...rest} = reminder;
+        return rest;
+    })
+    console.log(reminders);    
+    res.json({reminders})
+});
+
+app.post('/reminders/done/:id', (req, res) => {
+    console.log(arrayReminders);
+    let obj = arrayReminders.find(obj => obj.id == req.params.id);
+    obj.notify.setDate(obj.notify.getDate() + 1);
+    console.log(arrayReminders);
+    res.sendStatus(200);
 });
 
 app.use("*", (req, res) => {
