@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors');
@@ -11,7 +12,7 @@ app.use(cors({origin: "*"}));
 //app.get('test', (req, res) => { res.json({ key: "It's working"}) });
 
 app.post('/sendmessage', (req, res) => { 
-    clockwork.sendSms({ To: '447758941459', Content: 'Hello World'}, 
+    clockwork.sendSms({ To:    process.env.NUMBER, Content: 'Hello World'}, 
         function(error, resp) {
             if (error) {
                 console.log('Something went wrong', error);
@@ -22,7 +23,6 @@ app.post('/sendmessage', (req, res) => {
 
         res.sendStatus(200);
 });
-
 
 app.get('/reminder', (req, res) => {
         res.json({reminders: arrayReminders})
