@@ -11,17 +11,14 @@
   </head>
   <body>
     <div class="container">
-    <form class="" action="http://localhost:3000/sendmessage" method="POST">
-      <input type="hidden" name="message" value="This is a test">
-      <input type="submit" class="button"  value="help">
-    </form>
-    <div id="reminderList">
-            
+      <form action="">
+        <input type="hidden" name="message" value="This is a test">
+        <button class="button" type="button" onclick="sendForm(); return false;">help</button>
+      </form>
+      <div id="reminderList"></div>
     </div>
-  </div>
 
-  <script src="/static/js/reminders.js" async defer></script>
-  
-  
+    <script src="/static/js/reminders.js" async defer></script>
+    <script src="/static/js/index.js" async defer></script>
   </body>
 </html>
