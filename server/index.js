@@ -10,6 +10,7 @@ var arrayReminders = [
     {id:"3", message:"Call your family", notify: new Date()}
 ];
 
+app.use(require('morgan')('tiny'))
 app.use(cors({origin: "*"}));
 
 // use this to test the endpoint runnning 
