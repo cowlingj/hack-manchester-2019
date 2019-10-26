@@ -3,14 +3,10 @@ const app = express()
 const port = 3000
 var clockwork = require('clockwork')({key:'84b3b39adaeacdb378a174c2fedb58cc62dcd01e'});
 
+// use this to test the endpoint runnning 
+//app.get('test', (req, res) => { res.json({ key: "It's working"}) });
 
-app.get('/', (req, res) => res.json({key:  "value"}))
-
-app.post('/immediate-help', (req, res) => { /* talk to clockwork */ res.sendStatus(200) })
-
-app.get('/test', (req, res) => { res.send("Hello World") });
-
-app.get('/sendMessage', (req, res) => { 
+app.post('/sendmessage', (req, res) => { 
     clockwork.sendSms({ To: '447758941459', Content: 'Hello World'}, 
         function(error, resp) {
             if (error) {
@@ -20,9 +16,6 @@ app.get('/sendMessage', (req, res) => {
             }
         });
 
-        res.send("The message was sent");
+        res.sendStatus(200);
 });
-
-app.get('');
-
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
