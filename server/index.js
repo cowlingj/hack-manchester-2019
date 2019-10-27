@@ -5,7 +5,7 @@ const formidable = require('express-formidable');
 const app = express()
 const cors = require('cors');
 const port = 3000
-var clockwork = require('clockwork')({key:'84b3b39adaeacdb378a174c2fedb58cc62dcd01e'});
+var clockwork = require('clockwork')({key:process.env.KEYCLOCKWORK});
 var carernotify1 = new Date();
 carernotify1.setMinutes(carernotify1.getMinutes() + 1);
 var carernotify2 = new Date();
@@ -25,7 +25,7 @@ function notifycarer(){
         });
        if(expiredReminders.length > 0){
         const expiredRemindersString = expiredReminders.map((reminder) => reminder.message).join("\n");
-        clockwork.sendSms({ To: process.env.NUMBER, Content: 'The patient did not do:\n' + expiredRemindersString}, 
+        clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary did not do:\n' + expiredRemindersString}, 
             function(error, resp) {
             if (error) {
                 console.log('Something went wrong', error);
