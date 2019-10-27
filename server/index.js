@@ -52,7 +52,7 @@ app.post('/sendmessage', formidable(), (req, res) => {
     const jsonresponse = JSON.parse(body);
     var address = jsonresponse.results[0].formatted_address;
     console.log('Mary needs urgent help. Address:' + address + '\n' + 'Open in maps:\n' + req.protocol + '://' + req.headers.host + '/map?latitude=' + req.fields.latitude +'&longitude='+ req.fields.longitude)
-    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address:' + address + '\n' + 'Open in maps:\n' + req.protocol + '://' + req.headers.host + '/map?lattitude=' + req.fields.latitude +'&longitude='+ req.fields.longitude}, 
+    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address:' + address + '\n' + 'Open in maps:\n' + req.protocol + '://' + req.headers.host + '/map'}, 
          function(error, resp) {
              if (error) {
                  console.log('Something went wrong', error);
