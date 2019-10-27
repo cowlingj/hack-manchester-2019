@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cp $BUILD_DIR/$(cat $ENV_DIR/APP_NAME) $CACHE_DIR
+rm $BUILD_DIR
+cp $CACHE_DIR $BUILD_DIR
