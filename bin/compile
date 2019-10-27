@@ -8,4 +8,5 @@ ENV_DIR=$3
 
 cp -r $BUILD_DIR/$(cat $ENV_DIR/APP_NAME) $CACHE_DIR/
 rm -r $BUILD_DIR
+mkdir $BUILD_DIR
 cp -r $CACHE_DIR/* $BUILD_DIR
