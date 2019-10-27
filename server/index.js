@@ -5,7 +5,7 @@ const formidable = require('express-formidable');
 const app = express()
 const cors = require('cors');
 const port = 3000
-var clockwork = require('clockwork')({key:'84b3b39adaeacdb378a174c2fedb58cc62dcd01e'});
+var clockwork = require('clockwork')({key:process.env.KEYCLOCKWORK});
 var carernotify1 = new Date();
 carernotify1.setMinutes(carernotify1.getMinutes() + 1);
 var carernotify2 = new Date();
