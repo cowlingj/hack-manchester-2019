@@ -1,6 +1,6 @@
 function markReminderAsDone(id) {
   var request = new XMLHttpRequest();
-  request.open("POST", "http://localhost:3000/reminders/done/" + id)
+  request.open("POST", window.serverAddress + "/reminders/done/" + id)
   request.onreadystatechange = function () {
     if(request.readyState === 4 && request.status === 200) {
       const toRemove = document.getElementsByClassName('reminder-' + id)[0]
@@ -11,7 +11,7 @@ function markReminderAsDone(id) {
 }
 
 var request = new XMLHttpRequest();
-request.open("GET", "http://localhost:3000/reminders")
+request.open("GET", window.serverAddress + "/reminders")
 request.onreadystatechange = function () {
   if(request.readyState === 4) {
     console.log(request.status)

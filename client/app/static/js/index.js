@@ -3,7 +3,7 @@ function sendForm() {
   const formData = new FormData(document.querySelector('form'));
   
   const request = new XMLHttpRequest();
-  request.open("POST", "http://localhost:3000/sendmessage")
+  request.open("POST", window.serverAddress + "/sendmessage")
   request.send(formData);
   request.onreadystatechange = function () {
     if (request.readyState == 4) {
