@@ -1,8 +1,9 @@
+require('dotenv').config()
+
 const express = require('express')
 const path = require('path')
 const app = express()
-const port = 3001
-require('dotenv').config()
+const port = parseInt(process.env.PORT)
 
 app.use(require('morgan')('tiny'))
 app.get('/serverAddress.js', (_req, res) => {
