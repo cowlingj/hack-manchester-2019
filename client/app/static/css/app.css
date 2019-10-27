@@ -19,15 +19,36 @@ padding: 15px 32px;
 text-align: center;
 text-decoration: none;
 display: inline-block;
-font-size: 10vw;
+font-size: 8vw;
 cursor: pointer;
 width: 100%;
 height: 100%;
-margin-top: 10%;
 border-radius: 8px;
 box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,1.19);
 margin-bottom: 3%;
 transition-duration: 0.5s;
+margin-bottom: 5%;
+}
+
+.button2 {
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2vw;
+  cursor: pointer;
+  width: 40%;
+  height: 40%;
+  border-radius: 55px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,1.19);
+  transition-duration: 0.5s;
+  margin-top: 1%;
+  background-color: #f5be41;
+}
+
+.button2:hover {
+  box-shadow: none;
 }
 
 .button:hover {
@@ -63,4 +84,18 @@ button:hover {
 .reminderText {
   font-size: 3vw;
   color: #1995ad;
+}
+
+.cardi {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 4%;
+    border-radius: 8px;
+    margin-top: 0%;
+    transition-duration: 0.5s;
+    padding-bottom: 3%;
+
+}
+
+.container {
+  padding: 1%;
 }

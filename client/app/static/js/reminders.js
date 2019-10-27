@@ -28,7 +28,7 @@ request.onreadystatechange = function () {
 
             var reminderButtonElement = document.createElement('button');
             reminderButtonElement.classList.add('col-4', 'w3-animate-right');
-            reminderButtonElement.innerHTML = 'done';
+            reminderButtonElement.innerHTML = '<i class="fas fa-check-circle"></i>' + ' done';
 
             if (typeof response.reminders[reminderIndex] === 'string') {
               reminderTextElement.innerHTML = response.reminders[i];
@@ -49,5 +49,17 @@ request.onreadystatechange = function () {
     }
   }
 }
+
+function addReminder() {
+  // var txt;
+  var person = prompt("Please enter your reminder:", "Reminder");
+  // if (person == null || person == "") {
+  //   txt = "User cancelled the prompt.";
+  // } else {
+  //   txt = "Hello " + person + "! How are you today?";
+  // }
+  // document.getElementById("demo").innerHTML = txt;
+}
+
 request.onerror = function (_req, _err) { console.log(request.responseText) }
 request.send();
