@@ -25,7 +25,7 @@ function notifycarer(){
         });
        if(expiredReminders.length > 0){
         const expiredRemindersString = expiredReminders.map((reminder) => reminder.message).join("\n");
-        clockwork.sendSms({ To: process.env.NUMBER, Content: 'The patient did not do:\n' + expiredRemindersString}, 
+        clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary did not do:\n' + expiredRemindersString}, 
             function(error, resp) {
             if (error) {
                 console.log('Something went wrong', error);
