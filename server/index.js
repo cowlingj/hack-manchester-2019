@@ -51,6 +51,7 @@ app.post('/sendmessage', formidable(), (req, res) => {
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     const jsonresponse = JSON.parse(body);
     var address = jsonresponse.results[0].formatted_address;
+    console.log('Mary needs urgent help. Address:' + address + '\n' + 'Open in maps: ' +'https://www.google.com/maps/search/?api=1&query='+req.fields.latitude +','+ req.fields.longitude);
     clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address:' + address}, 
          function(error, resp) {
              if (error) {
@@ -61,7 +62,7 @@ app.post('/sendmessage', formidable(), (req, res) => {
              res.sendStatus(200);
              }
          });
-         
+         //+req.fields.latitude +','+ req.fields.longitude
      })
     }
     else{
