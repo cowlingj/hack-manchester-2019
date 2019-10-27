@@ -1,11 +1,8 @@
 
 function sendForm() {
-
-var formData = new FormData();
-
-formData.append("message", document.querySelector('form [name="message"]').innerHTML);
-
-  var request = new XMLHttpRequest();
+  const formData = new FormData(document.querySelector('form'));
+  
+  const request = new XMLHttpRequest();
   request.open("POST", "http://localhost:3000/sendmessage")
   request.send(formData);
   request.onreadystatechange = function () {
