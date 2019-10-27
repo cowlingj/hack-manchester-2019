@@ -51,8 +51,7 @@ app.post('/sendmessage', formidable(), (req, res) => {
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     const jsonresponse = JSON.parse(body);
     var address = jsonresponse.results[0].formatted_address;
-    console.log('Mary needs urgent help. Address:' + address + '\n' + 'Open in maps: ' +'https://www.google.com/maps/search/?api=1&query='+req.fields.latitude +','+ req.fields.longitude);
-    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address:' + address}, 
+    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address:' + address + '\n' + 'Open in maps:\n' + req.protocol + '://' + req.headers.host + '/map?lattitude=' + req.fields.latitude +'&longitude='+ req.fields.longitude}, 
          function(error, resp) {
              if (error) {
                  console.log('Something went wrong', error);
@@ -62,7 +61,6 @@ app.post('/sendmessage', formidable(), (req, res) => {
              res.sendStatus(200);
              }
          });
-         //+req.fields.latitude +','+ req.fields.longitude
      })
     }
     else{
@@ -92,12 +90,15 @@ app.get('/reminders', (req, res) => {
 
 app.post('/reminders/done/:id', (req, res) => {
     let obj = arrayReminders.find(obj => obj.id == req.params.id);
-    //obj.notify.setDate(obj.notify.getDate() + 1);
     obj.notify.setMinutes(obj.notify.getMinutes() + 2);
     obj.carernotify = new Date(obj.notify);
     obj.carernotify.setMinutes(obj.carernotify.getMinutes() + 1);
     res.sendStatus(200);
 });
+
+app.get('/map', (req, res) => {
+    res.redirect('https://www.google.com/maps/search/?api=1&query=' + req.query.latitude + ',' + req.query.longitude)
+})
 
 app.use("*", (req, res) => {
     res.sendStatus(400);
