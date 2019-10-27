@@ -1,6 +1,7 @@
 require('dotenv').config()
 var request = require('request');
 const express = require('express')
+const formidable = require('express-formidable');
 const app = express()
 const cors = require('cors');
 const port = 3000
@@ -41,9 +42,11 @@ app.use(cors({origin: "*"}));
 // use this to test the endpoint runnning 
 //app.get('test', (req, res) => { res.json({ key: "It's working"}) });
 
-app.post('/sendmessage', (req, res) => { 
+app.post('/sendmessage', formidable(), (req, res) => { 
     //googlemaps
-    request('https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key='+ process.env.KEY, function (error, response, body) {
+    console.log(req.fields);
+    if(req.fields.latitude || req.fields.longitude){
+    request('https://maps.googleapis.com/maps/api/geocode/json?latlng='+req.fields.latitude+','+req.fields.longitude+'&key='+ process.env.KEY, function (error, response, body) {
     console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     const jsonresponse = JSON.parse(body);
@@ -52,13 +55,29 @@ app.post('/sendmessage', (req, res) => {
          function(error, resp) {
              if (error) {
                  console.log('Something went wrong', error);
+                 res.sendStatus(500);
              } else {
              console.log('Message sent',resp.responses[0].id);
+             res.sendStatus(200);
              }
          });
-         res.sendStatus(200);
-     });    
-});
+         
+     })
+    }
+    else{
+        clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address: unknown'}, 
+         function(error, resp) {
+             if (error) {
+                 console.log('Something went wrong', error);
+                 res.sendStatus(500);
+             } else {
+             console.log('Message sent',resp.responses[0].id);
+             res.sendStatus(200);
+             }
+         });
+    }
+})
+    
 
 app.get('/reminders', (req, res) => {
    var reminders =  arrayReminders.filter(function(reminder){
