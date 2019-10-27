@@ -1,4 +1,5 @@
 require('dotenv').config()
+var request = require('request');
 const express = require('express')
 const app = express()
 const cors = require('cors');
@@ -41,15 +42,22 @@ app.use(cors({origin: "*"}));
 //app.get('test', (req, res) => { res.json({ key: "It's working"}) });
 
 app.post('/sendmessage', (req, res) => { 
-    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Hello World'}, 
-        function(error, resp) {
-            if (error) {
-                console.log('Something went wrong', error);
-            } else {
-            console.log('Message sent',resp.responses[0].id);
-            }
-        });
-        res.sendStatus(200);
+    //googlemaps
+    request('https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key='+ process.env.KEY, function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    const jsonresponse = JSON.parse(body);
+    var address = jsonresponse.results[0].formatted_address;
+    clockwork.sendSms({ To: process.env.NUMBER, Content: 'Mary needs urgent help. Address:' + address}, 
+         function(error, resp) {
+             if (error) {
+                 console.log('Something went wrong', error);
+             } else {
+             console.log('Message sent',resp.responses[0].id);
+             }
+         });
+         res.sendStatus(200);
+     });    
 });
 
 app.get('/reminders', (req, res) => {
