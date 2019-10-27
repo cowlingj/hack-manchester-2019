@@ -52,7 +52,7 @@ request.onreadystatechange = function () {
 
 function addReminder() {
   // var txt;
-  var person = prompt("Please enter your reminder:", "Reminder");
+  var person = prompt("Please enter your reminder:", "New reminder");
   // if (person == null || person == "") {
   //   txt = "User cancelled the prompt.";
   // } else {

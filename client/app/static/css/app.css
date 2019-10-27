@@ -1,5 +1,5 @@
 body {
-  background-color: #f1f1f2;
+  background-color: #063852;
 }
 
 .center {
@@ -93,6 +93,7 @@ button:hover {
     margin-top: 0%;
     transition-duration: 0.5s;
     padding-bottom: 3%;
+    background-color: #f1f1f2;
 
 }
 
